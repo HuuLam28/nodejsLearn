@@ -22,4 +22,8 @@ router
   .patch(tourController.updateTours)
   .delete(tourController.deleteTour);
 
+router
+  .route('/monthly-plan/:year')
+  .get(tourController.getMonthlyPlan);
+
 module.exports = router;

@@ -1,6 +1,8 @@
 const express = require("express");
 const morgan = require("morgan");
 
+const AppError = require('./4-natours/starter/utils/appError');
+const globalErrorHandler = require('./4-natours/starter/controllers/models/errorController');
 const tourRouter = require("../complete-node-bootcamp-master/4-natours/starter/routes/tourRoute");
 const usersRouter = require("../complete-node-bootcamp-master/4-natours/starter/routes/userRoute");
 
@@ -146,4 +148,21 @@ app.use('/api/v1/users', usersRouter);
 // app.listen(port, (res, req) => {
 //   console.log(`App running on port ${port}`);
 // });
+app.all('*', (req, res, next) => {
+  // res.status(404).json({
+  //   // status: '404 Not Found',
+  //   // message: `Can't find ${req.originalUrl} on this server!`
+  // })
+
+  // const err = new Error(`Can't find ${req.originalUrl} on this server!`);
+  // err.status = 'fail';
+  // err.statusCode = 404;
+  // console.log(err);
+
+  next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
+});
+
+app.use(globalErrorHandler)
+
+ 
 module.exports = app;

@@ -1,8 +1,8 @@
 const express = require("express");
 const morgan = require("morgan");
 
-const tourRouter = require("../complete-node-bootcamp-master/4-natours/starter/routes/tourRoute");
-const usersRouter = require("../complete-node-bootcamp-master/4-natours/starter/routes/userRoute");
+const tourRouter = require("./4-natours/starter/routes/tourRoute");
+const usersRouter = require("./4-natours/starter/routes/userRoute");
 
 // const tours = JSON.parse(
 //   fs.readFileSync(

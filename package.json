@@ -5,7 +5,8 @@
   "main": "BE.js",
   "scripts": {
     "start:dev": "nodemon server.js",
-    "start:pod": "NODE_ENV=production nodemon server.js"
+    "start:pod": "NODE_ENV=production nodemon server.js",
+    "debug": "ndb server.js"
   },
   "author": "",
   "license": "ISC",

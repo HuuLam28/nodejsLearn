@@ -30,16 +30,12 @@ const AppError = require('./../../starter/utils/appError');
 //   }
 //   next();
 // }
-
-
 exports.aliasTopTours = (req, res, next) => {
   req.query.limit = '5';
   req.query.sort = '-ratingsAverage,price';
   req.query.fields = 'name,price,ratingsAverage,summary,difficulty';
   next();
 };
-
-
 
 exports.getAllTour = catchAsync(async (req, res, next) => {
   const features = new APIFeatures(Tour.find(), req.query)
@@ -60,10 +56,9 @@ exports.getAllTour = catchAsync(async (req, res, next) => {
 });
 
 exports.getTour = catchAsync(async (req, res, next) => {
+  console.log(req.params.id);
     const tour = await Tour.findById(req.params.id);
-
     if (!tour) {
-      console.log('No tour found');
       return next(new AppError(`Not found id:${req.params.id}`, 404));
     }
     // Tour.findOne( {_id : req.params.id})
@@ -151,7 +146,7 @@ exports.getMonthlyPlan = catchAsync(async (req, res, next) => {
         $match: {
           startDates:
           { 
-            $gte: new Date(`${year}`-01-01),
+            $gte: new Date(`${year}`-1-1),
             $lte: new Date(`${year}`-12-31),
           }
         },

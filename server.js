@@ -1,8 +1,9 @@
-const dotenv = require("dotenv");
+// thêm file dotend biến môi trường để dễ dàng chỉnh sửa
+const dotenv = require("dotenv"); //import thư viện dotenv
 dotenv.config({path: './config.env'})
 
-const mongoose = require("mongoose");
-const app = require('./BE');
+const mongoose = require("mongoose");//import thư viện mongoose nên impport vào file server
+const app = require('./App'); //import file App.js
 
 const DB = process.env.DATABASE.replace('<password>', process.env.DATABASE_PASSWORD);
 
